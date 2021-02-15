@@ -1,6 +1,6 @@
 const { Product } = require("../db/models");
 
-const fetchProduct = async (productId, next) => {
+exports.fetchProduct = async (productId, next) => {
   try {
     const productFound = await Product.findByPk(productId);
     if (productFound) return productFound;
@@ -41,4 +41,5 @@ exports.productUpdate = async (req, res, next) => {
 exports.productDelete = async (req, res, next) => {
   await req.product.destroy();
   res.status(204).end();
+  console.log("I'm Deleting!");
 };
